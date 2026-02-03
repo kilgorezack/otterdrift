@@ -1,7 +1,7 @@
 /**
  * OtterDrift — Build Your Drift Experience
  * Multi-step buyer flow with personalization logic
- * Single base plan — addons shape the final experience and price
+ * Single base plan — addons shape the final named plan and price
  */
 
 (function () {
@@ -24,7 +24,7 @@
     'flow-management': 10,
     'digital-safety': 10,
     'guest-access': 5,
-    'priority-support': 15,
+    'extended-reach': 15,
     'quiet-focus': 5,
   };
 
@@ -35,6 +35,76 @@
     gaming: 10,
     'smart-home': 5,
   };
+
+  // ——————————————————————————————
+  // Plan naming and identity
+  // ——————————————————————————————
+  var planIdentities = {
+    'busy-household': {
+      name: 'Family',
+      label: 'OtterDrift Family',
+      tagline: 'Built for busy homes',
+    },
+    'home-office': {
+      name: 'Pro',
+      label: 'OtterDrift Pro',
+      tagline: 'Built for focused work',
+    },
+    streaming: {
+      name: 'Stream',
+      label: 'OtterDrift Stream',
+      tagline: 'Built for entertainment lovers',
+    },
+    gaming: {
+      name: 'Gamer',
+      label: 'OtterDrift Gamer',
+      tagline: 'Built for immersive play',
+    },
+    'smart-home': {
+      name: 'Connected',
+      label: 'OtterDrift Connected',
+      tagline: 'Built for the smart home',
+    },
+  };
+
+  // Priority order for naming when multiple lifestyles selected
+  var namingPriority = ['gaming', 'busy-household', 'home-office', 'streaming', 'smart-home'];
+
+  function getPlanName() {
+    var lifestyles = state.selectedLifestyles;
+    if (lifestyles.length === 0) return { label: 'OtterDrift', tagline: 'Your personalized experience' };
+
+    // Find primary and secondary based on priority
+    var primary = null;
+    var secondary = null;
+    for (var i = 0; i < namingPriority.length; i++) {
+      if (lifestyles.indexOf(namingPriority[i]) !== -1) {
+        if (!primary) {
+          primary = namingPriority[i];
+        } else if (!secondary) {
+          secondary = namingPriority[i];
+          break;
+        }
+      }
+    }
+
+    var plan = planIdentities[primary];
+    if (!plan) return { label: 'OtterDrift', tagline: 'Your personalized experience' };
+
+    if (secondary && lifestyles.length > 1) {
+      var secondaryPlan = planIdentities[secondary];
+      return {
+        label: 'OtterDrift ' + plan.name + ' + ' + secondaryPlan.name,
+        tagline: plan.tagline + ' and ' + secondaryPlan.tagline.replace('Built for ', ''),
+      };
+    }
+
+    if (lifestyles.length > 1 && !secondary) {
+      return { label: plan.label, tagline: plan.tagline };
+    }
+
+    return { label: plan.label, tagline: plan.tagline };
+  }
 
   // ——————————————————————————————
   // Data: Experience descriptions
@@ -51,72 +121,91 @@
     'flow-management': { name: 'Intelligent flow management', icon: '🌀' },
     'digital-safety': { name: 'Digital safety & protection', icon: '🛡️' },
     'guest-access': { name: 'Guest access control', icon: '👋' },
-    'priority-support': { name: 'Priority human support', icon: '💬' },
+    'extended-reach': { name: 'Outdoor & extended reach', icon: '🌳' },
     'quiet-focus': { name: 'Quiet & focus modes', icon: '🌙' },
   };
 
   // ——————————————————————————————
-  // Narrative generation
+  // Narrative generation — solves real household problems
   // ——————————————————————————————
   function generateNarrative() {
     var lifestyles = state.selectedLifestyles;
     var enhancers = state.selectedEnhancers;
 
-    // Build narrative based on primary lifestyle
-    var primaryLifestyle = lifestyles.length > 0 ? lifestyles[0] : 'default';
-
-    var narratives = {
-      default:
-        'Your OtterDrift experience is designed for effortless daily connection. Seamless, adaptive, and shaped around the way your household lives — calm, simple, and always ready.',
-      'busy-household':
-        'Your OtterDrift experience flows seamlessly across your busy household. Everyone stays connected in their own rhythm while the experience keeps everything in harmony — no matter how full the house gets.',
-      'home-office':
-        'Your OtterDrift experience brings clarity and calm to your work-from-home life. A reliable, focused connection that lets you do your best work without thinking about what\'s behind it.',
-      streaming:
-        'Your OtterDrift experience is built for uninterrupted enjoyment. Settle in, press play, and let every story unfold exactly as it should — smooth, immersive, and effortless.',
-      gaming:
-        'Your OtterDrift experience keeps you immersed in the worlds you love. Responsive, fluid, and designed to keep up with every moment of play — no matter how intense.',
-      'smart-home':
-        'Your OtterDrift experience connects your smart home with effortless grace. Every device, every automation, flowing together as one harmonious system.',
-    };
-
-    var narrative = narratives[primaryLifestyle] || narratives['default'];
-
-    // Add flavor for multiple lifestyles
-    if (lifestyles.length > 1) {
-      var secondaryNames = [];
-      for (var i = 1; i < lifestyles.length; i++) {
-        var data = lifestyleData[lifestyles[i]];
-        if (data) {
-          secondaryNames.push(data.name.toLowerCase());
-        }
-      }
-      if (secondaryNames.length > 0) {
-        narrative += ' Balanced beautifully with your ' + formatList(secondaryNames) + ' needs.';
+    // Primary lifestyle determines the core narrative
+    var primary = null;
+    for (var i = 0; i < namingPriority.length; i++) {
+      if (lifestyles.indexOf(namingPriority[i]) !== -1) {
+        primary = namingPriority[i];
+        break;
       }
     }
 
-    // Add enhancer flavor text
-    if (enhancers.length > 0) {
-      var enhancerFlavors = [];
-      if (enhancers.indexOf('flow-management') !== -1) {
-        enhancerFlavors.push('intelligent adaptation');
+    var narratives = {
+      'busy-household':
+        'No more arguing over who gets the connection. Your Family experience gives every person in the house their own seamless flow — kids doing homework, parents on video calls, someone streaming in the living room — all running beautifully at the same time, without anyone slowing each other down.',
+      'home-office':
+        'Video calls that never freeze. Uploads that don\'t crawl. Your Pro experience gives your work the dedicated, uninterrupted flow it deserves — so you can focus on the meeting, the deadline, or the creative work without ever thinking about what\'s powering it.',
+      streaming:
+        'No more buffering. No more "loading" screens during the best part. Your Stream experience delivers smooth, uninterrupted entertainment on every screen in the house — whether it\'s movie night in the living room or someone catching up on a series in bed.',
+      gaming:
+        'Lag-free, responsive, and built for the moments that matter most in play. Your Gamer experience keeps your connection fluid and consistent — so your gameplay feels as sharp as your skills, whether you\'re in competitive matches or downloading massive worlds.',
+      'smart-home':
+        'Every smart device, every automation, working in perfect harmony. Your Connected experience keeps cameras, speakers, thermostats, locks, and everything else flowing together reliably — so your home truly thinks ahead without hiccups or dropped connections.',
+    };
+
+    var narrative = narratives[primary] || 'Your OtterDrift experience is shaped entirely around the way you live — seamless, adaptive, and effortlessly personal.';
+
+    // Add secondary lifestyle context
+    var secondaryLifestyles = [];
+    for (var j = 0; j < lifestyles.length; j++) {
+      if (lifestyles[j] !== primary) {
+        secondaryLifestyles.push(lifestyles[j]);
       }
-      if (enhancers.indexOf('digital-safety') !== -1) {
-        enhancerFlavors.push('comprehensive protection');
-      }
-      if (enhancers.indexOf('guest-access') !== -1) {
-        enhancerFlavors.push('welcoming guest access');
-      }
-      if (enhancers.indexOf('priority-support') !== -1) {
-        enhancerFlavors.push('dedicated human support');
-      }
-      if (enhancers.indexOf('quiet-focus') !== -1) {
-        enhancerFlavors.push('mindful focus scheduling');
+    }
+
+    if (secondaryLifestyles.length > 0) {
+      var secondaryPhrases = {
+        'busy-household': 'keeping every member of your household flowing without friction',
+        'home-office': 'giving your work-from-home life the dedicated focus it needs',
+        streaming: 'delivering buffer-free entertainment on every screen',
+        gaming: 'keeping your gaming responsive and immersive',
+        'smart-home': 'keeping every smart device running in harmony',
+      };
+
+      var phrases = [];
+      for (var k = 0; k < secondaryLifestyles.length; k++) {
+        if (secondaryPhrases[secondaryLifestyles[k]]) {
+          phrases.push(secondaryPhrases[secondaryLifestyles[k]]);
+        }
       }
 
-      if (enhancerFlavors.length > 0) {
-        narrative += ' Enhanced with ' + formatList(enhancerFlavors) + '.';
+      if (phrases.length > 0) {
+        narrative += ' Plus, it\'s optimized for ' + formatList(phrases) + '.';
+      }
+    }
+
+    // Add enhancer context
+    if (enhancers.length > 0) {
+      var enhancerPhrases = [];
+      if (enhancers.indexOf('flow-management') !== -1) {
+        enhancerPhrases.push('intelligent flow management that learns your daily rhythm');
+      }
+      if (enhancers.indexOf('digital-safety') !== -1) {
+        enhancerPhrases.push('built-in digital protection for every device');
+      }
+      if (enhancers.indexOf('guest-access') !== -1) {
+        enhancerPhrases.push('easy guest access that keeps your network separate and secure');
+      }
+      if (enhancers.indexOf('extended-reach') !== -1) {
+        enhancerPhrases.push('extended coverage that reaches your backyard, garage, and patio');
+      }
+      if (enhancers.indexOf('quiet-focus') !== -1) {
+        enhancerPhrases.push('quiet modes that reduce distractions on your schedule');
+      }
+
+      if (enhancerPhrases.length > 0) {
+        narrative += ' All enhanced with ' + formatList(enhancerPhrases) + '.';
       }
     }
 
@@ -258,9 +347,8 @@
       step2Next.disabled = !hasSelection;
 
       if (hasSelection) {
-        var count = state.selectedLifestyles.length;
-        step2Hint.textContent =
-          count + ' lifestyle' + (count > 1 ? 's' : '') + ' selected';
+        var plan = getPlanName();
+        step2Hint.textContent = plan.label + ' — ' + plan.tagline;
         step2Hint.style.color = 'var(--color-accent)';
       } else {
         step2Hint.textContent = 'Select at least one lifestyle to continue';
@@ -324,13 +412,15 @@
   // Step 4: Summary & Checkout
   // ——————————————————————————————
   function buildSummary() {
-    // Title
-    summaryTitle.textContent = 'Your OtterDrift Experience';
+    var plan = getPlanName();
 
-    // Narrative
+    // Title — named plan
+    summaryTitle.textContent = plan.label;
+
+    // Narrative — problem-solving description
     summaryNarrative.textContent = generateNarrative();
 
-    // Base info (single base)
+    // Base info — shows the named plan
     summaryBase.innerHTML =
       '<span class="summary__base-icon">' +
       '<svg viewBox="0 0 32 32" fill="none" width="24" height="24" style="color: var(--color-accent);">' +
@@ -339,8 +429,8 @@
       '</svg>' +
       '</span>' +
       '<div class="summary__base-info">' +
-      '<h4>OtterDrift Base</h4>' +
-      '<p>Seamless, adaptive foundation</p>' +
+      '<h4>' + plan.label + '</h4>' +
+      '<p>' + plan.tagline + '</p>' +
       '</div>';
 
     // Lifestyle tags
@@ -401,18 +491,15 @@
     }, 100);
   });
 
-  // Apple Pay button in summary (placeholder — will be configured later)
+  // Apple Pay buttons (placeholder — will be configured later)
   if (applePayBtn) {
     applePayBtn.addEventListener('click', function () {
-      // Apple Pay integration placeholder
       showConfirmation();
     });
   }
 
-  // Apple Pay button in checkout form (placeholder — will be configured later)
   if (applePayBtnCheckout) {
     applePayBtnCheckout.addEventListener('click', function () {
-      // Apple Pay integration placeholder
       showConfirmation();
     });
   }
@@ -423,7 +510,6 @@
   });
 
   function showConfirmation() {
-    // Hide everything and show confirmation
     summaryContainer.style.display = 'none';
     checkoutForm.style.display = 'none';
     step4Actions.style.display = 'none';
@@ -450,6 +536,7 @@
 
     // Log the personalization mapping (invisible backend logic)
     console.log('[OtterDrift] Experience profile mapped:', {
+      planName: getPlanName().label,
       lifestyles: state.selectedLifestyles,
       enhancers: state.selectedEnhancers,
       plan: mapToBackendProfile(),
@@ -512,8 +599,8 @@
     if (state.selectedEnhancers.indexOf('guest-access') !== -1) {
       profile.features.push('guest-network');
     }
-    if (state.selectedEnhancers.indexOf('priority-support') !== -1) {
-      profile.priority = 'premium';
+    if (state.selectedEnhancers.indexOf('extended-reach') !== -1) {
+      profile.features.push('mesh-outdoor-extension');
     }
     if (state.selectedEnhancers.indexOf('quiet-focus') !== -1) {
       profile.features.push('scheduled-profiles');
