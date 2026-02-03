@@ -15,7 +15,7 @@ This is a static website (HTML, CSS, vanilla JS) with two main pages:
 
 The buyer flow follows a guided configurator model:
 
-1. **Your Foundation** — Introduces the single OtterDrift Base that every plan starts from.
+1. **Your Foundation** — Introduces the single OtterDrift One that every plan starts from.
 2. **Your Lifestyle** — Users select one or more lifestyle profiles (Busy Household, Home Office, Streaming, Gaming, Smart Home). This determines the plan's name and core narrative.
 3. **Your Enhancers** — Optional add-ons: Intelligent Flow Management, Digital Safety, Guest Access, Outdoor & Extended Reach, Quiet & Focus Modes.
 4. **Your Experience** — Summary page with a dynamically named plan (e.g., "OtterDrift Family", "OtterDrift Gamer + Pro"), problem-solving narrative, consolidated monthly price, and checkout form with Apple Pay placeholder.
