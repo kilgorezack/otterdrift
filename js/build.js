@@ -1,6 +1,7 @@
 /**
  * OtterDrift — Build Your Drift Experience
  * Multi-step buyer flow with personalization logic
+ * Single base plan — addons shape the final experience and price
  */
 
 (function () {
@@ -11,43 +12,33 @@
   // ——————————————————————————————
   var state = {
     currentStep: 1,
-    selectedBase: null,
-    basePrice: 0,
+    basePrice: 49,
     selectedLifestyles: [],
     selectedEnhancers: [],
-    enhancerPrices: {},
   };
 
   // ——————————————————————————————
-  // Data: Experience descriptions and narratives
+  // Hidden pricing (never shown per-item)
   // ——————————————————————————————
-  var baseData = {
-    explorer: {
-      name: 'Explorer Base',
-      icon: '🌊',
-      tagline: 'Everyday digital flow',
-      summaryTitle: 'Explorer Experience',
-    },
-    creator: {
-      name: 'Creator Base',
-      icon: '✦',
-      tagline: 'Work, sharing, and focus',
-      summaryTitle: 'Creator Experience',
-    },
-    gather: {
-      name: 'Gather Base',
-      icon: '🏡',
-      tagline: 'Whole-home harmony',
-      summaryTitle: 'Gather Experience',
-    },
-    zen: {
-      name: 'Zen Base',
-      icon: '🍃',
-      tagline: 'Complete peace of mind',
-      summaryTitle: 'Zen Experience',
-    },
+  var enhancerPricing = {
+    'flow-management': 10,
+    'digital-safety': 10,
+    'guest-access': 5,
+    'priority-support': 15,
+    'quiet-focus': 5,
   };
 
+  var lifestylePricing = {
+    'busy-household': 5,
+    'home-office': 5,
+    streaming: 5,
+    gaming: 10,
+    'smart-home': 5,
+  };
+
+  // ——————————————————————————————
+  // Data: Experience descriptions
+  // ——————————————————————————————
   var lifestyleData = {
     'busy-household': { name: 'Busy household', icon: '👨‍👩‍👧‍👦' },
     'home-office': { name: 'Home office', icon: '💼' },
@@ -64,80 +55,46 @@
     'quiet-focus': { name: 'Quiet & focus modes', icon: '🌙' },
   };
 
-  // Narrative generation based on selections
+  // ——————————————————————————————
+  // Narrative generation
+  // ——————————————————————————————
   function generateNarrative() {
-    var base = state.selectedBase;
     var lifestyles = state.selectedLifestyles;
     var enhancers = state.selectedEnhancers;
 
+    // Build narrative based on primary lifestyle
+    var primaryLifestyle = lifestyles.length > 0 ? lifestyles[0] : 'default';
+
     var narratives = {
-      explorer: {
-        default:
-          'Your OtterDrift experience is designed for effortless daily connection. Browse, stream, and stay connected with a flow that keeps pace with your curiosity — calm, simple, and always ready.',
-        'busy-household':
-          'Your OtterDrift experience flows seamlessly across your busy household. Everyone stays connected in their own rhythm while the experience keeps everything in harmony.',
-        'home-office':
-          'Your OtterDrift experience brings clarity to your work-from-home life. A calm, reliable connection that lets you focus on what matters without thinking about what\'s behind it.',
-        streaming:
-          'Your OtterDrift experience is built for uninterrupted enjoyment. Settle in, press play, and let every story unfold exactly as it should — smooth and immersive.',
-        gaming:
-          'Your OtterDrift experience keeps you immersed in the worlds you love. Responsive, fluid, and designed to keep up with every moment of play.',
-        'smart-home':
-          'Your OtterDrift experience connects your smart home with effortless grace. Every device, every automation, flowing together as one.',
-      },
-      creator: {
-        default:
-          'Your OtterDrift Creator experience is shaped around focus and flow. Collaborate, create, and share without friction — your digital workspace, redefined with calm clarity.',
-        'busy-household':
-          'Even in a busy household, your Creator experience carves out the space you need. Focused flow when you need it, shared harmony when you don\'t.',
-        'home-office':
-          'Your Creator experience transforms your home office into a professional sanctuary. Uninterrupted calls, seamless collaboration, and a connection as reliable as your ambition.',
-        streaming:
-          'Create and unwind in equal measure. Your Creator experience balances professional flow with personal enjoyment — effortlessly switching between work and play.',
-        gaming:
-          'From creative work to immersive play, your Creator experience adapts to every mode. Deep focus for your projects, fluid responsiveness for your downtime.',
-        'smart-home':
-          'Your Creator experience weaves your smart home and professional life into one seamless tapestry. Focus when you work, automation when you rest.',
-      },
-      gather: {
-        default:
-          'Your OtterDrift Gather experience is built for the whole household. Everyone stays connected, nobody compromises, and every moment — from movie night to homework — flows without friction.',
-        'busy-household':
-          'Your Gather experience thrives in the beautiful chaos of a busy home. Every person, every device, every moment gets the attention it deserves — simultaneously and seamlessly.',
-        'home-office':
-          'Balancing work and family under one roof? Your Gather experience gives your office dedicated focus while keeping the rest of the household flowing in perfect harmony.',
-        streaming:
-          'Your Gather experience turns every screen into a stage. Stream in every room, on every device — simultaneously — while the household hums along without missing a beat.',
-        gaming:
-          'Game, stream, and connect all at once. Your Gather experience ensures everyone in the house gets their moment — competitive play, casual browsing, and everything in between.',
-        'smart-home':
-          'Your Gather experience turns a connected home into an intelligent one. Every smart device, every family member, every moment — flowing together in effortless harmony.',
-      },
-      zen: {
-        default:
-          'Your OtterDrift Zen experience is the pinnacle of digital serenity. Every connection is protected, every moment is balanced, and your home feels as peaceful as the experience itself.',
-        'busy-household':
-          'Even the busiest household deserves peace. Your Zen experience brings order to the digital chaos — protecting every device, balancing every need, and keeping your home in perfect equilibrium.',
-        'home-office':
-          'Your Zen experience wraps your professional and personal life in a layer of calm. Protected, balanced, and serene — so you can focus on what truly matters.',
-        streaming:
-          'Immerse yourself in stories without a care. Your Zen experience protects every stream, balances every connection, and lets you enjoy entertainment in total peace.',
-        gaming:
-          'Play without worry. Your Zen experience shields your immersive moments while maintaining the balance and protection your entire household deserves.',
-        'smart-home':
-          'Your Zen experience is the ultimate smart home companion. Every device protected, every connection intelligent, every automation running in serene harmony.',
-      },
+      default:
+        'Your OtterDrift experience is designed for effortless daily connection. Seamless, adaptive, and shaped around the way your household lives — calm, simple, and always ready.',
+      'busy-household':
+        'Your OtterDrift experience flows seamlessly across your busy household. Everyone stays connected in their own rhythm while the experience keeps everything in harmony — no matter how full the house gets.',
+      'home-office':
+        'Your OtterDrift experience brings clarity and calm to your work-from-home life. A reliable, focused connection that lets you do your best work without thinking about what\'s behind it.',
+      streaming:
+        'Your OtterDrift experience is built for uninterrupted enjoyment. Settle in, press play, and let every story unfold exactly as it should — smooth, immersive, and effortless.',
+      gaming:
+        'Your OtterDrift experience keeps you immersed in the worlds you love. Responsive, fluid, and designed to keep up with every moment of play — no matter how intense.',
+      'smart-home':
+        'Your OtterDrift experience connects your smart home with effortless grace. Every device, every automation, flowing together as one harmonious system.',
     };
 
-    if (!base || !narratives[base]) {
-      return 'Your curated OtterDrift experience is being shaped around your unique lifestyle.';
+    var narrative = narratives[primaryLifestyle] || narratives['default'];
+
+    // Add flavor for multiple lifestyles
+    if (lifestyles.length > 1) {
+      var secondaryNames = [];
+      for (var i = 1; i < lifestyles.length; i++) {
+        var data = lifestyleData[lifestyles[i]];
+        if (data) {
+          secondaryNames.push(data.name.toLowerCase());
+        }
+      }
+      if (secondaryNames.length > 0) {
+        narrative += ' Balanced beautifully with your ' + formatList(secondaryNames) + ' needs.';
+      }
     }
-
-    // Use the first selected lifestyle for narrative, or default
-    var primaryLifestyle = lifestyles.length > 0 ? lifestyles[0] : 'default';
-    var baseNarratives = narratives[base];
-
-    var narrative = baseNarratives[primaryLifestyle] || baseNarratives['default'];
 
     // Add enhancer flavor text
     if (enhancers.length > 0) {
@@ -174,35 +131,56 @@
   }
 
   // ——————————————————————————————
+  // Calculate total price (hidden logic)
+  // ——————————————————————————————
+  function calculateTotal() {
+    var total = state.basePrice;
+
+    state.selectedLifestyles.forEach(function (ls) {
+      if (lifestylePricing[ls]) {
+        total += lifestylePricing[ls];
+      }
+    });
+
+    state.selectedEnhancers.forEach(function (en) {
+      if (enhancerPricing[en]) {
+        total += enhancerPricing[en];
+      }
+    });
+
+    return total;
+  }
+
+  // ——————————————————————————————
   // DOM References
   // ——————————————————————————————
   var steps = document.querySelectorAll('.build-step');
   var progressSteps = document.querySelectorAll('.build-nav__step');
 
-  // Step 1
-  var baseCards = document.querySelectorAll('.base-card');
+  // Step 1 (Foundation)
   var step1Next = document.getElementById('step1Next');
-  var step1Hint = document.getElementById('step1Hint');
 
-  // Step 2
+  // Step 2 (Lifestyle)
   var lifestyleCards = document.querySelectorAll('.lifestyle-card');
   var step2Next = document.getElementById('step2Next');
   var step2Back = document.getElementById('step2Back');
   var step2Hint = document.getElementById('step2Hint');
 
-  // Step 3
+  // Step 3 (Enhancers)
   var enhancerCards = document.querySelectorAll('.enhancer-card');
   var step3Next = document.getElementById('step3Next');
   var step3Back = document.getElementById('step3Back');
   var step3Hint = document.getElementById('step3Hint');
 
-  // Step 4
+  // Step 4 (Summary & Checkout)
   var step4Back = document.getElementById('step4Back');
   var checkoutBtn = document.getElementById('checkoutBtn');
+  var applePayBtn = document.getElementById('applePayBtn');
   var checkoutForm = document.getElementById('checkoutForm');
   var summaryContainer = document.getElementById('summaryContainer');
   var step4Actions = document.getElementById('step4Actions');
   var submitOrder = document.getElementById('submitOrder');
+  var applePayBtnCheckout = document.getElementById('applePayBtnCheckout');
   var confirmationScreen = document.getElementById('confirmationScreen');
 
   // Summary elements
@@ -225,7 +203,6 @@
       step.classList.remove('build-step--active', 'build-step--visible');
       if (sn === stepNumber) {
         step.classList.add('build-step--active');
-        // Trigger animation after a brief delay
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
             step.classList.add('build-step--visible');
@@ -255,34 +232,10 @@
   }
 
   // ——————————————————————————————
-  // Step 1: Base Selection
+  // Step 1: Foundation (single base — just continue)
   // ——————————————————————————————
-  baseCards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      var baseName = this.getAttribute('data-base');
-      var price = parseInt(this.getAttribute('data-price'));
-
-      // Deselect all
-      baseCards.forEach(function (c) {
-        c.classList.remove('base-card--selected');
-      });
-
-      // Select this one
-      this.classList.add('base-card--selected');
-      state.selectedBase = baseName;
-      state.basePrice = price;
-
-      // Enable continue
-      step1Next.disabled = false;
-      step1Hint.textContent = baseData[baseName].name + ' selected';
-      step1Hint.style.color = 'var(--color-accent)';
-    });
-  });
-
   step1Next.addEventListener('click', function () {
-    if (state.selectedBase) {
-      goToStep(2);
-    }
+    goToStep(2);
   });
 
   // ——————————————————————————————
@@ -294,16 +247,13 @@
       var idx = state.selectedLifestyles.indexOf(lifestyle);
 
       if (idx !== -1) {
-        // Deselect
         state.selectedLifestyles.splice(idx, 1);
         this.classList.remove('lifestyle-card--selected');
       } else {
-        // Select
         state.selectedLifestyles.push(lifestyle);
         this.classList.add('lifestyle-card--selected');
       }
 
-      // Update button state
       var hasSelection = state.selectedLifestyles.length > 0;
       step2Next.disabled = !hasSelection;
 
@@ -335,22 +285,16 @@
   enhancerCards.forEach(function (card) {
     card.addEventListener('click', function () {
       var enhancer = this.getAttribute('data-enhancer');
-      var price = parseInt(this.getAttribute('data-enhancer-price'));
       var idx = state.selectedEnhancers.indexOf(enhancer);
 
       if (idx !== -1) {
-        // Deselect
         state.selectedEnhancers.splice(idx, 1);
-        delete state.enhancerPrices[enhancer];
         this.classList.remove('enhancer-card--selected');
       } else {
-        // Select
         state.selectedEnhancers.push(enhancer);
-        state.enhancerPrices[enhancer] = price;
         this.classList.add('enhancer-card--selected');
       }
 
-      // Update button state
       var hasSelection = state.selectedEnhancers.length > 0;
       step3Next.disabled = !hasSelection;
 
@@ -380,27 +324,23 @@
   // Step 4: Summary & Checkout
   // ——————————————————————————————
   function buildSummary() {
-    var base = baseData[state.selectedBase];
-    if (!base) return;
-
     // Title
-    summaryTitle.textContent = 'Your ' + base.summaryTitle;
+    summaryTitle.textContent = 'Your OtterDrift Experience';
 
     // Narrative
     summaryNarrative.textContent = generateNarrative();
 
-    // Base info
+    // Base info (single base)
     summaryBase.innerHTML =
       '<span class="summary__base-icon">' +
-      base.icon +
+      '<svg viewBox="0 0 32 32" fill="none" width="24" height="24" style="color: var(--color-accent);">' +
+      '<path d="M4 22 Q10 8 16 16 Q22 24 28 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>' +
+      '<circle cx="28" cy="10" r="2.5" fill="currentColor" opacity="0.6"/>' +
+      '</svg>' +
       '</span>' +
       '<div class="summary__base-info">' +
-      '<h4>' +
-      base.name +
-      '</h4>' +
-      '<p>' +
-      base.tagline +
-      '</p>' +
+      '<h4>OtterDrift Base</h4>' +
+      '<p>Seamless, adaptive foundation</p>' +
       '</div>';
 
     // Lifestyle tags
@@ -431,12 +371,8 @@
       }
     });
 
-    // Price calculation
-    var total = state.basePrice;
-    Object.keys(state.enhancerPrices).forEach(function (key) {
-      total += state.enhancerPrices[key];
-    });
-
+    // Single consolidated price
+    var total = calculateTotal();
     summaryPrice.innerHTML = '$' + total + '<span>/mo</span>';
   }
 
@@ -444,13 +380,11 @@
     goToStep(3);
   });
 
-  // Checkout flow
+  // Show checkout form
   checkoutBtn.addEventListener('click', function () {
-    // Show checkout form, hide summary actions
     checkoutForm.style.display = 'block';
     step4Actions.style.display = 'none';
 
-    // Animate in
     checkoutForm.style.opacity = '0';
     checkoutForm.style.transform = 'translateY(20px)';
     checkoutForm.style.transition = 'opacity 500ms ease, transform 500ms ease';
@@ -462,20 +396,38 @@
       });
     });
 
-    // Scroll to form
     setTimeout(function () {
       checkoutForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
   });
 
+  // Apple Pay button in summary (placeholder — will be configured later)
+  if (applePayBtn) {
+    applePayBtn.addEventListener('click', function () {
+      // Apple Pay integration placeholder
+      showConfirmation();
+    });
+  }
+
+  // Apple Pay button in checkout form (placeholder — will be configured later)
+  if (applePayBtnCheckout) {
+    applePayBtnCheckout.addEventListener('click', function () {
+      // Apple Pay integration placeholder
+      showConfirmation();
+    });
+  }
+
   // Submit order
   submitOrder.addEventListener('click', function () {
+    showConfirmation();
+  });
+
+  function showConfirmation() {
     // Hide everything and show confirmation
     summaryContainer.style.display = 'none';
     checkoutForm.style.display = 'none';
     step4Actions.style.display = 'none';
 
-    // Update header
     var header = document.querySelector('#step4 .build-step__header');
     if (header) {
       header.style.display = 'none';
@@ -498,42 +450,42 @@
 
     // Log the personalization mapping (invisible backend logic)
     console.log('[OtterDrift] Experience profile mapped:', {
-      base: state.selectedBase,
       lifestyles: state.selectedLifestyles,
       enhancers: state.selectedEnhancers,
       plan: mapToBackendProfile(),
+      price: calculateTotal(),
     });
-  });
+  }
 
   // ——————————————————————————————
   // Backend Profile Mapping (invisible to user)
   // ——————————————————————————————
   function mapToBackendProfile() {
-    // This logic maps user experience choices to pre-built operational plans
-    // The user never sees this mapping
     var profile = {
       tier: 'standard',
       features: [],
       priority: 'normal',
     };
 
-    // Base tier mapping
-    switch (state.selectedBase) {
-      case 'explorer':
-        profile.tier = 'essential';
-        break;
-      case 'creator':
-        profile.tier = 'professional';
-        break;
-      case 'gather':
-        profile.tier = 'family';
-        break;
-      case 'zen':
-        profile.tier = 'premium';
-        break;
+    // Lifestyle adjustments determine tier
+    if (
+      state.selectedLifestyles.indexOf('gaming') !== -1 ||
+      (state.selectedLifestyles.indexOf('busy-household') !== -1 &&
+        state.selectedLifestyles.indexOf('streaming') !== -1)
+    ) {
+      profile.tier = 'premium';
+    } else if (
+      state.selectedLifestyles.indexOf('busy-household') !== -1 ||
+      state.selectedLifestyles.indexOf('streaming') !== -1
+    ) {
+      profile.tier = 'family';
+    } else if (state.selectedLifestyles.indexOf('home-office') !== -1) {
+      profile.tier = 'professional';
+    } else if (state.selectedLifestyles.indexOf('smart-home') !== -1) {
+      profile.tier = 'connected';
     }
 
-    // Lifestyle adjustments
+    // Lifestyle feature flags
     if (
       state.selectedLifestyles.indexOf('busy-household') !== -1 ||
       state.selectedLifestyles.indexOf('streaming') !== -1
