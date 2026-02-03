@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Experience — OtterDrift</title>
+  <meta name="description" content="Build your personal OtterDrift experience. Choose your base, tell us about your life, and we'll shape the perfect connection for you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M6 22 Q12 10 16 16 Q20 22 26 10' stroke='%235FA8D3' fill='none' stroke-width='3' stroke-linecap='round'/></svg>">
+</head>
+<body class="build-page">
+
+  <!-- Build Navigation -->
+  <nav class="build-nav" id="buildNav">
+    <a href="index.html" class="build-nav__logo">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M4 22 Q10 8 16 16 Q22 24 28 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="10" r="2.5" fill="currentColor" opacity="0.6"/>
+      </svg>
+      OtterDrift
+    </a>
+
+    <div class="build-nav__progress" id="progressNav">
+      <div class="build-nav__step build-nav__step--active" data-step="1">
+        <span class="build-nav__step-dot"></span>
+        <span class="build-nav__step-text">Your Base</span>
+      </div>
+      <div class="build-nav__separator"></div>
+      <div class="build-nav__step" data-step="2">
+        <span class="build-nav__step-dot"></span>
+        <span class="build-nav__step-text">Your Lifestyle</span>
+      </div>
+      <div class="build-nav__separator"></div>
+      <div class="build-nav__step" data-step="3">
+        <span class="build-nav__step-dot"></span>
+        <span class="build-nav__step-text">Your Enhancers</span>
+      </div>
+      <div class="build-nav__separator"></div>
+      <div class="build-nav__step" data-step="4">
+        <span class="build-nav__step-dot"></span>
+        <span class="build-nav__step-text">Your Experience</span>
+      </div>
+    </div>
+
+    <a href="index.html" class="build-nav__close">
+      <span>Exit</span>
+    </a>
+  </nav>
+
+  <!-- Build Flow -->
+  <div class="build-flow" id="buildFlow">
+
+    <!-- ==============================
+         STEP 1: Choose Your Base
+         ============================== -->
+    <div class="build-step build-step--active" id="step1" data-step="1">
+      <div class="build-step__header">
+        <span class="build-step__overline">Step 1 of 4</span>
+        <h1 class="build-step__title">Start with your base experience</h1>
+        <p class="build-step__subtitle">
+          How does your household flow? Choose the starting point that best reflects the way you live.
+        </p>
+      </div>
+
+      <div class="base-grid" id="baseGrid">
+
+        <!-- Explorer Base -->
+        <div class="base-card base-card--explorer" data-base="explorer" data-price="59">
+          <div class="base-card__check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="base-card__icon">🌊</span>
+          <h3 class="base-card__name">Explorer Base</h3>
+          <p class="base-card__tagline">Everyday digital flow</p>
+          <p class="base-card__desc">
+            The world is at your fingertips. Browse, connect, and explore with an effortless experience that keeps up with your curiosity. For those who want their digital life to simply work.
+          </p>
+          <div class="base-card__price">
+            Starting at <strong>$59</strong>/mo
+          </div>
+        </div>
+
+        <!-- Creator Base -->
+        <div class="base-card base-card--creator" data-base="creator" data-price="79">
+          <div class="base-card__check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="base-card__icon">✦</span>
+          <h3 class="base-card__name">Creator Base</h3>
+          <p class="base-card__tagline">Work, sharing, and focus</p>
+          <p class="base-card__desc">
+            Your ideas deserve uninterrupted flow. Whether you're on calls, collaborating across time zones, or deep in creative work — Creator Base gives your ambitions room to breathe.
+          </p>
+          <div class="base-card__price">
+            Starting at <strong>$79</strong>/mo
+          </div>
+        </div>
+
+        <!-- Gather Base -->
+        <div class="base-card base-card--gather" data-base="gather" data-price="89">
+          <div class="base-card__check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="base-card__icon">🏡</span>
+          <h3 class="base-card__name">Gather Base</h3>
+          <p class="base-card__tagline">Whole-home harmony</p>
+          <p class="base-card__desc">
+            Movie night, homework, video calls, and gaming — all at once. Gather Base keeps everyone in your household flowing together without anyone missing a beat.
+          </p>
+          <div class="base-card__price">
+            Starting at <strong>$89</strong>/mo
+          </div>
+        </div>
+
+        <!-- Zen Base -->
+        <div class="base-card base-card--zen" data-base="zen" data-price="109">
+          <div class="base-card__check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="base-card__icon">🍃</span>
+          <h3 class="base-card__name">Zen Base</h3>
+          <p class="base-card__tagline">Complete peace of mind</p>
+          <p class="base-card__desc">
+            The ultimate in digital serenity. Every device protected, every connection balanced, every moment at ease. For those who believe their digital life should feel as peaceful as their home.
+          </p>
+          <div class="base-card__price">
+            Starting at <strong>$109</strong>/mo
+          </div>
+        </div>
+
+      </div>
+
+      <div class="build-actions">
+        <button class="btn btn--primary btn--large" id="step1Next" disabled>
+          Continue
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+      <p class="build-hint" id="step1Hint">Select a base experience to continue</p>
+    </div>
+
+    <!-- ==============================
+         STEP 2: Lifestyle Fit
+         ============================== -->
+    <div class="build-step" id="step2" data-step="2">
+      <div class="build-step__header">
+        <span class="build-step__overline">Step 2 of 4</span>
+        <h1 class="build-step__title">Tell us about your home</h1>
+        <p class="build-step__subtitle">
+          What best reflects how your household lives? This helps us shape the experience around you.
+        </p>
+      </div>
+
+      <div class="personalization-section">
+        <div class="personalization-section__header">
+          <p class="personalization-section__label">Lifestyle Fit</p>
+          <h3 class="personalization-section__title">Select what resonates most</h3>
+          <p class="personalization-section__desc">Choose one or more that describe your home life.</p>
+        </div>
+
+        <div class="lifestyle-grid" id="lifestyleGrid">
+
+          <div class="lifestyle-card" data-lifestyle="busy-household">
+            <span class="lifestyle-card__icon">👨‍👩‍👧‍👦</span>
+            <h4 class="lifestyle-card__name">Busy household</h4>
+            <p class="lifestyle-card__desc">Multiple people, multiple rhythms, one seamless experience for all.</p>
+          </div>
+
+          <div class="lifestyle-card" data-lifestyle="home-office">
+            <span class="lifestyle-card__icon">💼</span>
+            <h4 class="lifestyle-card__name">Home office</h4>
+            <p class="lifestyle-card__desc">Your professional life deserves a dedicated, focused flow.</p>
+          </div>
+
+          <div class="lifestyle-card" data-lifestyle="streaming">
+            <span class="lifestyle-card__icon">🎬</span>
+            <h4 class="lifestyle-card__name">Streaming &amp; entertainment</h4>
+            <p class="lifestyle-card__desc">Every story deserves to be experienced without interruption.</p>
+          </div>
+
+          <div class="lifestyle-card" data-lifestyle="gaming">
+            <span class="lifestyle-card__icon">🎮</span>
+            <h4 class="lifestyle-card__name">Gaming &amp; immersive</h4>
+            <p class="lifestyle-card__desc">Dive deep into immersive worlds without looking back.</p>
+          </div>
+
+          <div class="lifestyle-card" data-lifestyle="smart-home">
+            <span class="lifestyle-card__icon">🏠</span>
+            <h4 class="lifestyle-card__name">Smart home</h4>
+            <p class="lifestyle-card__desc">Your home thinks ahead so you don't have to.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="build-actions">
+        <button class="btn btn--secondary" id="step2Back">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: rotate(180deg);">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Back
+        </button>
+        <button class="btn btn--primary btn--large" id="step2Next" disabled>
+          Continue
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+      <p class="build-hint" id="step2Hint">Select at least one lifestyle to continue</p>
+    </div>
+
+    <!-- ==============================
+         STEP 3: Experience Enhancers
+         ============================== -->
+    <div class="build-step" id="step3" data-step="3">
+      <div class="build-step__header">
+        <span class="build-step__overline">Step 3 of 4</span>
+        <h1 class="build-step__title">Complete your experience</h1>
+        <p class="build-step__subtitle">
+          These aren't extras — they're essential elements that make your OtterDrift experience feel complete.
+        </p>
+      </div>
+
+      <div class="personalization-section">
+        <div class="personalization-section__header">
+          <p class="personalization-section__label">Experience Enhancers</p>
+          <h3 class="personalization-section__title">Shape how OtterDrift works for you</h3>
+          <p class="personalization-section__desc">Select the elements that matter most to your household.</p>
+        </div>
+
+        <div class="enhancer-grid" id="enhancerGrid">
+
+          <div class="enhancer-card" data-enhancer="flow-management" data-enhancer-price="10">
+            <div class="enhancer-card__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" width="12" height="12">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="enhancer-card__icon">🌀</span>
+            <h4 class="enhancer-card__name">Intelligent flow management</h4>
+            <p class="enhancer-card__desc">Your connection learns your rhythm and adapts — prioritizing what matters, when it matters.</p>
+            <p class="enhancer-card__price">+$10/mo</p>
+          </div>
+
+          <div class="enhancer-card" data-enhancer="digital-safety" data-enhancer-price="10">
+            <div class="enhancer-card__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" width="12" height="12">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="enhancer-card__icon">🛡️</span>
+            <h4 class="enhancer-card__name">Digital safety &amp; protection</h4>
+            <p class="enhancer-card__desc">A protective layer that keeps threats away from every device in your home — invisibly and automatically.</p>
+            <p class="enhancer-card__price">+$10/mo</p>
+          </div>
+
+          <div class="enhancer-card" data-enhancer="guest-access" data-enhancer-price="5">
+            <div class="enhancer-card__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" width="12" height="12">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="enhancer-card__icon">👋</span>
+            <h4 class="enhancer-card__name">Guest access control</h4>
+            <p class="enhancer-card__desc">Welcome visitors with seamless, separated access — no sharing passwords, no worries.</p>
+            <p class="enhancer-card__price">+$5/mo</p>
+          </div>
+
+          <div class="enhancer-card" data-enhancer="priority-support" data-enhancer-price="15">
+            <div class="enhancer-card__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" width="12" height="12">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="enhancer-card__icon">💬</span>
+            <h4 class="enhancer-card__name">Priority human support</h4>
+            <p class="enhancer-card__desc">Real people, not automated responses. A dedicated expert is always just a call away when you need guidance.</p>
+            <p class="enhancer-card__price">+$15/mo</p>
+          </div>
+
+          <div class="enhancer-card" data-enhancer="quiet-focus" data-enhancer-price="5">
+            <div class="enhancer-card__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" width="12" height="12">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="enhancer-card__icon">🌙</span>
+            <h4 class="enhancer-card__name">Quiet &amp; focus modes</h4>
+            <p class="enhancer-card__desc">Schedule distraction-free windows for work, sleep, or family time. Your home follows your lead.</p>
+            <p class="enhancer-card__price">+$5/mo</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="build-actions">
+        <button class="btn btn--secondary" id="step3Back">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: rotate(180deg);">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Back
+        </button>
+        <button class="btn btn--primary btn--large" id="step3Next" disabled>
+          See My Experience
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+      <p class="build-hint" id="step3Hint">Select at least one enhancer to continue</p>
+    </div>
+
+    <!-- ==============================
+         STEP 4: Experience Summary & Checkout
+         ============================== -->
+    <div class="build-step" id="step4" data-step="4">
+      <div class="build-step__header">
+        <span class="build-step__overline">Your Experience</span>
+        <h1 class="build-step__title">Here's what we've built together</h1>
+        <p class="build-step__subtitle">
+          A curated OtterDrift experience, shaped entirely around the way you live.
+        </p>
+      </div>
+
+      <!-- Summary Card -->
+      <div class="summary" id="summaryContainer">
+        <div class="summary__card">
+
+          <!-- Summary Hero -->
+          <div class="summary__hero">
+            <div class="summary__hero-content">
+              <p class="summary__hero-overline">Your OtterDrift Experience</p>
+              <h2 class="summary__hero-title" id="summaryTitle"><!-- Dynamically populated --></h2>
+              <p class="summary__hero-narrative" id="summaryNarrative"><!-- Dynamically populated --></p>
+            </div>
+          </div>
+
+          <!-- Summary Body -->
+          <div class="summary__body">
+
+            <!-- Base -->
+            <div class="summary__section">
+              <p class="summary__section-label">Your base experience</p>
+              <div class="summary__base" id="summaryBase">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Lifestyle -->
+            <div class="summary__section">
+              <p class="summary__section-label">Your lifestyle</p>
+              <div class="summary__tags" id="summaryLifestyle">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Enhancers -->
+            <div class="summary__section">
+              <p class="summary__section-label">Your experience includes</p>
+              <div class="summary__tags" id="summaryEnhancers">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="summary__price-section">
+              <p class="summary__price-label">Your monthly experience</p>
+              <p class="summary__price" id="summaryPrice"><!-- Dynamically populated --></p>
+              <p class="summary__price-note">No contracts. No hidden fees. Cancel anytime.</p>
+            </div>
+
+          </div>
+
+          <!-- Checkout -->
+          <div class="summary__checkout">
+            <button class="summary__checkout-btn" id="checkoutBtn">
+              Begin My OtterDrift Experience
+            </button>
+          </div>
+
+          <!-- Reassurance -->
+          <div class="summary__reassurance">
+            <div class="summary__reassurance-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              No contracts
+            </div>
+            <div class="summary__reassurance-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Free setup
+            </div>
+            <div class="summary__reassurance-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              30-day peace of mind guarantee
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Checkout Form (hidden initially) -->
+      <div class="checkout-form" id="checkoutForm" style="display: none;">
+        <div class="checkout-form__section">
+          <h3 class="checkout-form__title">Where should we set up your experience?</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" placeholder="Jane">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" placeholder="Doe">
+            </div>
+          </div>
+          <div class="form-row--full" style="margin-bottom: var(--space-lg);">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" placeholder="jane@example.com">
+            </div>
+          </div>
+          <div class="form-row--full" style="margin-bottom: var(--space-lg);">
+            <div class="form-group">
+              <label for="address">Service address</label>
+              <input type="text" id="address" placeholder="123 River Lane">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" placeholder="Riverdale">
+            </div>
+            <div class="form-group">
+              <label for="zip">ZIP code</label>
+              <input type="text" id="zip" placeholder="90210">
+            </div>
+          </div>
+          <div class="form-row--full" style="margin-bottom: var(--space-lg);">
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" placeholder="(555) 123-4567">
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-form__section">
+          <h3 class="checkout-form__title">When would you like to start?</h3>
+          <div class="form-row--full">
+            <div class="form-group">
+              <label for="startDate">Preferred start date</label>
+              <input type="date" id="startDate">
+            </div>
+          </div>
+        </div>
+
+        <div class="build-actions" style="padding-top: var(--space-xl);">
+          <button class="btn btn--primary btn--large" id="submitOrder" style="width: 100%; max-width: 400px;">
+            Complete My Experience
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
+        </div>
+        <p class="build-hint">Your information is encrypted and secure. We'll reach out to confirm your setup details.</p>
+      </div>
+
+      <div class="build-actions" id="step4Actions">
+        <button class="btn btn--secondary" id="step4Back">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: rotate(180deg);">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Adjust My Experience
+        </button>
+      </div>
+
+      <!-- Confirmation (hidden initially) -->
+      <div id="confirmationScreen" style="display: none;">
+        <div class="summary" style="margin-top: var(--space-2xl);">
+          <div class="summary__card">
+            <div class="summary__hero" style="padding: var(--space-4xl) var(--space-2xl);">
+              <div class="summary__hero-content">
+                <p style="font-size: 3rem; margin-bottom: var(--space-lg);">🎉</p>
+                <h2 class="summary__hero-title">Welcome to OtterDrift</h2>
+                <p class="summary__hero-narrative" style="margin-top: var(--space-lg);">
+                  Your experience is being prepared. We'll reach out shortly with everything you need to start your seamless, effortless digital life. The drift begins soon.
+                </p>
+              </div>
+            </div>
+            <div style="padding: var(--space-2xl); text-align: center;">
+              <a href="index.html" class="btn btn--primary">Return Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="js/build.js"></script>
+</body>
+</html>

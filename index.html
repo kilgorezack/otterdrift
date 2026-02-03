@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OtterDrift — Internet That Drifts With You</title>
+  <meta name="description" content="OtterDrift delivers seamless digital experiences that adapt to your life. Not speeds. Not specs. Just flow.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M6 22 Q12 10 16 16 Q20 22 26 10' stroke='%235FA8D3' fill='none' stroke-width='3' stroke-linecap='round'/></svg>">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav nav--dark" id="mainNav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 22 Q10 8 16 16 Q22 24 28 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="28" cy="10" r="2.5" fill="currentColor" opacity="0.6"/>
+        </svg>
+        OtterDrift
+      </a>
+      <div class="nav__links">
+        <a href="#philosophy" class="nav__link">Philosophy</a>
+        <a href="#how-it-works" class="nav__link">How It Works</a>
+        <a href="#experiences" class="nav__link">Experiences</a>
+        <a href="build.html" class="nav__cta">Build Your Experience</a>
+      </div>
+      <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+
+    <!-- Animated waves -->
+    <div class="hero__waves">
+      <svg class="hero__wave hero__wave--1" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,80 C360,160 720,0 1080,80 C1260,120 1380,100 1440,90 L1440,200 L0,200 Z"/>
+      </svg>
+      <svg class="hero__wave hero__wave--2" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,120 C240,40 480,160 720,100 C960,40 1200,140 1440,80 L1440,200 L0,200 Z"/>
+      </svg>
+      <svg class="hero__wave hero__wave--3" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,100 C180,160 420,60 720,120 C1020,180 1260,80 1440,110 L1440,200 L0,200 Z"/>
+      </svg>
+    </div>
+
+    <div class="hero__content">
+      <span class="hero__overline">A new kind of connection</span>
+      <h1 class="hero__title">
+        Internet that <em>drifts</em> with you
+      </h1>
+      <p class="hero__subtitle">
+        A seamless digital experience that adapts to your life, your household, and the way you move through every day. Effortless by design.
+      </p>
+      <div class="hero__cta-group">
+        <a href="build.html" class="hero__cta">Build My OtterDrift Experience</a>
+        <a href="#how-it-works" class="hero__cta hero__cta--ghost">See How It Works</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-hint">
+      <span>Discover</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="section philosophy" id="philosophy">
+    <div class="container">
+      <div class="philosophy__header animate-on-scroll">
+        <span class="text-overline">Our Philosophy</span>
+        <h2 class="text-headline" style="margin-top: var(--space-md); margin-bottom: var(--space-lg);">
+          We believe internet should adapt to people
+        </h2>
+        <p class="text-body-lg" style="color: var(--color-text-secondary);">
+          Not the other way around. OtterDrift isn't something you configure — it's something that understands you.
+        </p>
+      </div>
+
+      <div class="philosophy__grid">
+        <div class="philosophy__card animate-on-scroll stagger-1">
+          <div class="philosophy__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>Fluid by nature</h3>
+          <p>Your digital life doesn't follow a pattern, and neither does OtterDrift. It flows with your household, shifting seamlessly as your day unfolds.</p>
+        </div>
+
+        <div class="philosophy__card animate-on-scroll stagger-2">
+          <div class="philosophy__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Calm by design</h3>
+          <p>No decisions about things you shouldn't have to think about. OtterDrift handles the complexity, so your home just works — quietly and beautifully.</p>
+        </div>
+
+        <div class="philosophy__card animate-on-scroll stagger-3">
+          <div class="philosophy__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3>Personal by default</h3>
+          <p>Every household is different. OtterDrift learns the rhythm of yours and shapes itself around the people and moments that matter most.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="how-it-works__header animate-on-scroll">
+        <span class="text-overline">How It Works</span>
+        <h2 class="text-headline" style="margin-top: var(--space-md); margin-bottom: var(--space-lg);">
+          Three steps to your perfect flow
+        </h2>
+        <p class="text-body-lg" style="color: var(--color-text-secondary);">
+          No technical decisions. No confusing comparisons. Just tell us how you live.
+        </p>
+      </div>
+
+      <div class="how-it-works__steps">
+        <div class="step animate-on-scroll stagger-1">
+          <div class="step__number">1</div>
+          <h3 class="step__title">Choose your base</h3>
+          <p class="step__desc">Start with the experience that resonates with how your household flows — from quiet simplicity to vibrant energy.</p>
+        </div>
+        <div class="step animate-on-scroll stagger-2">
+          <div class="step__number">2</div>
+          <h3 class="step__title">Tell us about you</h3>
+          <p class="step__desc">Share a few details about your lifestyle and home. We'll shape your experience around the moments that matter to you.</p>
+        </div>
+        <div class="step animate-on-scroll stagger-3">
+          <div class="step__number">3</div>
+          <h3 class="step__title">Start drifting</h3>
+          <p class="step__desc">Your curated OtterDrift experience arrives ready to go. No setup stress, no learning curve — just seamless flow from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiences Preview -->
+  <section class="section experiences" id="experiences">
+    <div class="container">
+      <div class="experiences__header animate-on-scroll">
+        <span class="text-overline">Starting Points</span>
+        <h2 class="text-headline" style="margin-top: var(--space-md); margin-bottom: var(--space-lg);">
+          Every great experience starts somewhere
+        </h2>
+        <p class="text-body-lg" style="color: var(--color-text-secondary);">
+          Not tiers. Not plans. Think of these as starting points for how you want your digital life to feel.
+        </p>
+      </div>
+
+      <div class="experiences__grid">
+        <div class="experience-preview animate-on-scroll stagger-1">
+          <span class="experience-preview__icon">🌊</span>
+          <h3 class="experience-preview__name">Explorer</h3>
+          <p class="experience-preview__tagline">Everyday digital flow</p>
+          <p class="experience-preview__desc">For the curious and the connected. Browse, stream, and stay in touch with an experience that keeps pace with your day.</p>
+        </div>
+        <div class="experience-preview animate-on-scroll stagger-2">
+          <span class="experience-preview__icon">✦</span>
+          <h3 class="experience-preview__name">Creator</h3>
+          <p class="experience-preview__tagline">Work, sharing, and focus</p>
+          <p class="experience-preview__desc">Dedicated space for your ideas. Clear, uninterrupted flow that lets you create, collaborate, and share without friction.</p>
+        </div>
+        <div class="experience-preview animate-on-scroll stagger-3">
+          <span class="experience-preview__icon">🏡</span>
+          <h3 class="experience-preview__name">Gather</h3>
+          <p class="experience-preview__tagline">Whole-home harmony</p>
+          <p class="experience-preview__desc">Everyone connected, nobody compromised. Movie night, homework, video calls — all flowing together without missing a beat.</p>
+        </div>
+        <div class="experience-preview animate-on-scroll stagger-4">
+          <span class="experience-preview__icon">🍃</span>
+          <h3 class="experience-preview__name">Zen</h3>
+          <p class="experience-preview__tagline">Complete peace of mind</p>
+          <p class="experience-preview__desc">The ultimate in digital serenity. Every connection protected, every moment balanced. For those who believe in calm above all.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reassurance -->
+  <section class="section section--compact reassurance">
+    <div class="container">
+      <div class="reassurance__grid">
+        <div class="reassurance__item animate-on-scroll stagger-1">
+          <div class="reassurance__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h4 class="reassurance__title">Always protected</h4>
+          <p class="reassurance__desc">Your household is wrapped in layers of seamless security — invisibly keeping you safe.</p>
+        </div>
+        <div class="reassurance__item animate-on-scroll stagger-2">
+          <div class="reassurance__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h4 class="reassurance__title">Human support</h4>
+          <p class="reassurance__desc">Real people who genuinely care, available whenever you need a helping hand.</p>
+        </div>
+        <div class="reassurance__item animate-on-scroll stagger-3">
+          <div class="reassurance__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h4 class="reassurance__title">Always adapting</h4>
+          <p class="reassurance__desc">OtterDrift evolves with your household, learning and improving as your life changes.</p>
+        </div>
+        <div class="reassurance__item animate-on-scroll stagger-4">
+          <div class="reassurance__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h4 class="reassurance__title">No surprises</h4>
+          <p class="reassurance__desc">Transparent, honest pricing. One simple monthly amount, no hidden fees, no contracts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-section__content animate-on-scroll">
+        <h2 class="cta-section__title">Ready to feel the drift?</h2>
+        <p class="cta-section__subtitle">
+          In just a few moments, you'll build an experience uniquely shaped around your life.
+        </p>
+        <a href="build.html" class="btn btn--large" style="background: var(--color-surface); color: var(--color-primary);">
+          Build My OtterDrift Experience
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 22 Q10 8 16 16 Q22 24 28 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="28" cy="10" r="2.5" fill="currentColor" opacity="0.6"/>
+            </svg>
+            OtterDrift
+          </div>
+          <p>Seamless digital experiences that adapt to your life. Not the other way around.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Experience</h4>
+          <a href="build.html">Build Your Drift</a>
+          <a href="#experiences">Explore Bases</a>
+          <a href="#">For Your Home</a>
+          <a href="#">For Your Family</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="#">Our Story</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Community</a>
+          <a href="#">Service Status</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 OtterDrift. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
