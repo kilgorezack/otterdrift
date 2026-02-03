@@ -1304,7 +1304,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
-/* ---------- Apple Pay Button ---------- */
+/* ---------- Checkout Divider ---------- */
 .summary__checkout-divider {
   display: flex;
   align-items: center;
@@ -1324,52 +1324,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8125rem;
   color: var(--color-text-light);
   flex-shrink: 0;
-}
-
-.apple-pay-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding: 0.875rem;
-  border-radius: var(--radius-lg);
-  background: #000000;
-  color: #FFFFFF;
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-.apple-pay-btn:hover {
-  background: #1a1a1a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.apple-pay-btn__text {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #FFFFFF;
-}
-
-.apple-pay-btn__logo {
-  height: 20px;
-  width: auto;
-}
-
-.apple-pay-btn__logo path:first-child {
-  fill: transparent;
-}
-
-.apple-pay-btn__logo path:nth-child(2) {
-  fill: transparent;
-}
-
-.apple-pay-btn__logo path:last-child {
-  fill: #FFFFFF;
 }
 
 /* ---------- Build: Personalization Selections ---------- */

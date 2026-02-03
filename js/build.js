@@ -264,12 +264,10 @@
   // Step 4 (Summary & Checkout)
   var step4Back = document.getElementById('step4Back');
   var checkoutBtn = document.getElementById('checkoutBtn');
-  var applePayBtn = document.getElementById('applePayBtn');
   var checkoutForm = document.getElementById('checkoutForm');
   var summaryContainer = document.getElementById('summaryContainer');
   var step4Actions = document.getElementById('step4Actions');
   var submitOrder = document.getElementById('submitOrder');
-  var applePayBtnCheckout = document.getElementById('applePayBtnCheckout');
   var confirmationScreen = document.getElementById('confirmationScreen');
 
   // Summary elements
@@ -490,19 +488,6 @@
       checkoutForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
   });
-
-  // Apple Pay buttons (placeholder — will be configured later)
-  if (applePayBtn) {
-    applePayBtn.addEventListener('click', function () {
-      showConfirmation();
-    });
-  }
-
-  if (applePayBtnCheckout) {
-    applePayBtnCheckout.addEventListener('click', function () {
-      showConfirmation();
-    });
-  }
 
   // Submit order
   submitOrder.addEventListener('click', function () {
