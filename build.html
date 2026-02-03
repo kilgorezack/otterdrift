@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M6 22 Q12 10 16 16 Q20 22 26 10' stroke='%235FA8D3' fill='none' stroke-width='3' stroke-linecap='round'/></svg>">
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body class="build-page">
 
@@ -347,14 +346,6 @@
             <button class="summary__checkout-btn" id="checkoutBtn">
               Begin My Experience
             </button>
-            <div class="summary__checkout-divider">
-              <span>or</span>
-            </div>
-            <stripe-buy-button
-              buy-button-id="buy_btn_1SwltRLRKfZa3Y6Wvj0DWXeG"
-              publishable-key="pk_live_51RQc3nLRKfZa3Y6WEIoPKtea8CG4iNhD3T06q3yxWND8BcieJPMav7lG9vXQQNgiTjrsSMwo3WoSrVm79UFMeWSC00Of1PA6tT"
-            >
-            </stripe-buy-button>
           </div>
 
           <!-- Reassurance -->
@@ -443,16 +434,6 @@
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </button>
-          <div class="checkout-divider" style="display: flex; align-items: center; gap: var(--space-md); width: 100%; max-width: 400px;">
-            <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
-            <span style="font-size: 0.8125rem; color: var(--color-text-light);">or</span>
-            <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
-          </div>
-          <stripe-buy-button
-            buy-button-id="buy_btn_1SwltRLRKfZa3Y6Wvj0DWXeG"
-            publishable-key="pk_live_51RQc3nLRKfZa3Y6WEIoPKtea8CG4iNhD3T06q3yxWND8BcieJPMav7lG9vXQQNgiTjrsSMwo3WoSrVm79UFMeWSC00Of1PA6tT"
-          >
-          </stripe-buy-button>
         </div>
         <p class="build-hint">Your information is encrypted and secure. We'll reach out to confirm your setup details.</p>
       </div>

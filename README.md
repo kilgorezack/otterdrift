@@ -18,7 +18,7 @@ The buyer flow follows a guided configurator model:
 1. **Your Foundation** — Introduces the single OtterDrift One that every plan starts from.
 2. **Your Lifestyle** — Users select one or more lifestyle profiles (Busy Household, Home Office, Streaming, Gaming, Smart Home). This determines the plan's name and core narrative.
 3. **Your Enhancers** — Optional add-ons: Intelligent Flow Management, Digital Safety, Guest Access, Outdoor & Extended Reach, Quiet & Focus Modes.
-4. **Your Experience** — Summary page with a dynamically named plan (e.g., "OtterDrift Family", "OtterDrift Gamer + Pro"), problem-solving narrative, consolidated monthly price, and checkout with Stripe integration.
+4. **Your Experience** — Summary page with a dynamically named plan (e.g., "OtterDrift Family", "OtterDrift Gamer"), problem-solving narrative, consolidated monthly price, and checkout.
 
 ### Dynamic Plan Naming
 
@@ -32,7 +32,7 @@ Plans are named based on lifestyle selections with a priority system:
 | Gaming | OtterDrift Gamer |
 | Smart Home | OtterDrift Connected |
 
-When multiple lifestyles are selected, the plan combines the top two by priority (e.g., "OtterDrift Gamer + Family").
+The plan is named after the first lifestyle the user selects. Additional lifestyle selections enhance the plan's features and price but keep the single plan name. Selecting all 5 lifestyles upgrades to **OtterDrift Connected** — the complete home experience.
 
 ### Pricing
 
@@ -74,6 +74,3 @@ Responsive breakpoints at 1024px, 768px, and 480px.
 
 Open `index.html` in a browser. No build tools, dependencies, or server required.
 
-## Payments
-
-Checkout is powered by [Stripe Buy Button](https://stripe.com/docs/payment-links/buy-button), embedded as a `<stripe-buy-button>` web component. The Stripe JS SDK is loaded async in the `<head>` of `build.html`.

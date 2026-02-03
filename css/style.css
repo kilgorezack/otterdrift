@@ -1304,27 +1304,6 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
-/* ---------- Checkout Divider ---------- */
-.summary__checkout-divider {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-md) 0;
-}
-
-.summary__checkout-divider::before,
-.summary__checkout-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--color-border);
-}
-
-.summary__checkout-divider span {
-  font-size: 0.8125rem;
-  color: var(--color-text-light);
-  flex-shrink: 0;
-}
 
 /* ---------- Build: Personalization Selections ---------- */
 .personalization-section {

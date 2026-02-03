@@ -41,67 +41,42 @@
   // ——————————————————————————————
   var planIdentities = {
     'busy-household': {
-      name: 'Family',
       label: 'OtterDrift Family',
       tagline: 'Built for busy homes',
     },
     'home-office': {
-      name: 'Pro',
       label: 'OtterDrift Pro',
       tagline: 'Built for focused work',
     },
     streaming: {
-      name: 'Stream',
       label: 'OtterDrift Stream',
       tagline: 'Built for entertainment lovers',
     },
     gaming: {
-      name: 'Gamer',
       label: 'OtterDrift Gamer',
       tagline: 'Built for immersive play',
     },
     'smart-home': {
-      name: 'Connected',
       label: 'OtterDrift Connected',
       tagline: 'Built for the smart home',
     },
   };
 
-  // Priority order for naming when multiple lifestyles selected
-  var namingPriority = ['gaming', 'busy-household', 'home-office', 'streaming', 'smart-home'];
-
+  // The first lifestyle selected is the primary plan name.
+  // Selecting all 5 lifestyles upgrades to OtterDrift Connected.
   function getPlanName() {
     var lifestyles = state.selectedLifestyles;
     if (lifestyles.length === 0) return { label: 'OtterDrift', tagline: 'Your personalized experience' };
 
-    // Find primary and secondary based on priority
-    var primary = null;
-    var secondary = null;
-    for (var i = 0; i < namingPriority.length; i++) {
-      if (lifestyles.indexOf(namingPriority[i]) !== -1) {
-        if (!primary) {
-          primary = namingPriority[i];
-        } else if (!secondary) {
-          secondary = namingPriority[i];
-          break;
-        }
-      }
+    // All lifestyles selected → top-tier Connected plan
+    if (lifestyles.length >= 5) {
+      return { label: 'OtterDrift Connected', tagline: 'The complete home experience' };
     }
 
+    // Single plan name based on the first lifestyle the user chose
+    var primary = lifestyles[0];
     var plan = planIdentities[primary];
     if (!plan) return { label: 'OtterDrift', tagline: 'Your personalized experience' };
-
-    if (secondary && lifestyles.length > 1) {
-      var secondaryPlan = planIdentities[secondary];
-      return {
-        label: 'OtterDrift ' + plan.name + ' + ' + secondaryPlan.name,
-        tagline: plan.tagline + ' and ' + secondaryPlan.tagline.replace('Built for ', ''),
-      };
-    }
-
-    if (lifestyles.length > 1 && !secondary) {
-      return { label: plan.label, tagline: plan.tagline };
-    }
 
     return { label: plan.label, tagline: plan.tagline };
   }
