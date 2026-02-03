@@ -2,7 +2,7 @@
 
 **Internet that drifts with you.**
 
-OtterDrift is a broadband experience brand that positions internet service as a lifestyle product rather than a utility. The website guides users through a personalized, Apple-inspired buying flow — no technical jargon, no speed tiers, no confusing comparisons. Users describe how they live, and OtterDrift shapes a named plan around them.
+OtterDrift is a demonstration broadband experience brand that positions internet service as a lifestyle product rather than a utility. The website guides users through a personalized, Apple-inspired buying flow — no technical jargon, no speed tiers, no confusing comparisons. Users describe how they live, and OtterDrift shapes a named plan around them.
 
 ## Project Overview
 
