@@ -108,13 +108,7 @@
     var enhancers = state.selectedEnhancers;
 
     // Primary lifestyle determines the core narrative
-    var primary = null;
-    for (var i = 0; i < namingPriority.length; i++) {
-      if (lifestyles.indexOf(namingPriority[i]) !== -1) {
-        primary = namingPriority[i];
-        break;
-      }
-    }
+    var primary = lifestyles.length > 0 ? lifestyles[0] : null;
 
     var narratives = {
       'busy-household':
